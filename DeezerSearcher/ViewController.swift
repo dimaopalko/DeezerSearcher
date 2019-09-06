@@ -31,26 +31,19 @@ class ViewController: UIViewController {
         let artistName = String(named.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[0])
         let albumName = String(named.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[1])
         let url = "https://api.deezer.com/search/album?q=\(artistName)%20\(albumName)"
-        
-        print(named.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true))
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { ( data, responce, error) in
                 if let data = data {
                     do {
                         let album = try JSONDecoder().decode(Album.self, from: data)
                         self.imageUrl = album.data[0].coverImageLink
-                        DispatchQueue.main.async {
-                            self.albumCoverImageView.dowloadFromServer(link: self.imageUrl)
-                            self.artistNameLabel.text = album.data[0].artist.name
-                            self.albumTitleLabel.text = album.data[0].albumTitle
-                        }
+                        self.updateUI()
                     } catch {
                         print("Ah sh*t, here we go again: \(error)")
                     }
                 }
                 }.resume()
         }
-        
     }
     
     func updateUI() {
@@ -63,7 +56,6 @@ class ViewController: UIViewController {
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         searchAlbum(named: searchTextField.text!)
-        searchTextField.text = ""
     }
     
 }

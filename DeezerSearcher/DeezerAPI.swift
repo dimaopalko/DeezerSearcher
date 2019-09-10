@@ -7,35 +7,46 @@
 //
 
 import Foundation
+import UIKit
 
 class DeezerAPI {
     
-    var imageUrl = ""
-    var album: Album = Album(data: [])
+    var downloadDelegate: DeezerDownloadDelegate!
     
     func searchAlbum(named: String) {
-        let artistName = String(named.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[0])
-        let albumName = String(named.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)[1])
+        let splitedName = named.components(separatedBy: ["-", ":", "|", #"\"# , "/", "~"])
+        let artistName = splitedName[0].dropLast().replacingOccurrences(of: " ", with: "%20")
+        let albumName = splitedName[1].dropFirst().replacingOccurrences(of: " ", with: "%20")
         let url = "https://api.deezer.com/search/album?q=\(artistName)%20\(albumName)"
-        
-        print(named.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true))
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { ( data, responce, error) in
                 if let data = data {
                     do {
                         let album = try JSONDecoder().decode(Album.self, from: data)
-                        self.imageUrl = album.data[0].coverImageLink
-                        
-                        
-                        DispatchQueue.main.async {
-                            print(self.album)
-                        }
+                        let artistName = album.data[0].artist.name
+                        let albumTitle = album.data[0].albumTitle
+                        let imageURL = album.data[0].coverImageLink
+                        let coverImage = self.downloadImageFromURL(url: imageURL!)
+                        self.downloadDelegate.didFinishDownload(artistName: artistName, albumTitle: albumTitle, coverImage: coverImage)
+                        print(album)
                     } catch {
                         print("Ah sh*t, here we go again: \(error)")
+                        let artistName = "Could not found that album"
+                        let albumTitle = ""
+                        let coverImage = UIImage(named: "no-image-png-3")
+                        self.downloadDelegate.didFinishDownload(artistName: artistName, albumTitle: albumTitle, coverImage: coverImage!)
                     }
                 }
                 }.resume()
         }
-        
     }
+    func downloadImageFromURL(url: String) -> UIImage {
+        let imageUrlString = url
+        
+        let imageUrl = URL(string: imageUrlString)!
+        let imageData = try! Data(contentsOf: imageUrl)
+        let image = UIImage(data: imageData) ?? UIImage(named: "no-image-png-3")!
+        return image
+    }
+    
 }

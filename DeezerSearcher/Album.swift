@@ -16,7 +16,7 @@ struct Album: Decodable {
 struct Item: Codable {
     let artist: Artist
     let albumTitle: String
-    let coverImageLink: String
+    let coverImageLink: String?
     
     private enum CodingKeys: String, CodingKey {
         case artist

@@ -40,6 +40,7 @@ class DeezerAPI {
                 }.resume()
         }
     }
+    
     func downloadImageFromURL(url: String) -> UIImage {
         let imageUrlString = url
         
@@ -48,5 +49,4 @@ class DeezerAPI {
         let image = UIImage(data: imageData) ?? UIImage(named: "no-image-png-3")!
         return image
     }
-    
 }

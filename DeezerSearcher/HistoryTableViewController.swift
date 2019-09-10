@@ -9,6 +9,8 @@
 import UIKit
 
 class HistoryTableViewController: UITableViewController {
+    
+    var savedRequests: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,7 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return savedRequests.count
     }
 
     /*

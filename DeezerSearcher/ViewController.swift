@@ -30,6 +30,8 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
         guard let text = searchTextField.text else { return }
         if text != "" {
             deezerAPI.searchAlbum(named: text)
+        } else {
+            displayMessage(title: nil, userMessage: "Please enter artist and album title")
         }
     }
     
@@ -38,6 +40,22 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
         self.artistNameLabel.text = artistName
         self.albumTitleLabel.text = albumTitle
         self.albumCoverImageView.image = coverImage
+        }
+    }
+    
+    func displayMessage(title: String?, userMessage: String) -> Void {
+        DispatchQueue.main.async
+            {
+                let alertController = UIAlertController(title: title, message: userMessage, preferredStyle: .alert)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                    DispatchQueue.main.async
+                        {
+                            self.dismiss(animated: true, completion: nil)
+                    }
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
         }
     }
     

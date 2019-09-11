@@ -10,29 +10,34 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
     
-    var savedRequests: [String] = []
+    var savedRequests: [Request] = []
+    var coreDataManager = CoreDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchSearchRequests()
+    }
+    
+    func fetchSearchRequests() {
+        savedRequests = coreDataManager.fetchSearchRequest()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return savedRequests.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
-        // Configure the cell...
+        cell.textLabel?.text = savedRequests[indexPath.row].text
 
         return cell
     }
-    */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
+    }
 
     /*
     // Override to support conditional editing of the table view.

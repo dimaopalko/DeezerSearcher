@@ -26,7 +26,7 @@ class DeezerAPI {
                         let artistName = album.data[0].artist.name
                         let albumTitle = album.data[0].albumTitle
                         let imageURL = album.data[0].coverImageLink
-                        let coverImage = self.downloadImageFromURL(url: imageURL!)
+                        let coverImage = self.downloadImageFromURL(url: imageURL)
                         self.downloadDelegate.didFinishDownload(artistName: artistName, albumTitle: albumTitle, coverImage: coverImage)
                         print(album)
                     } catch {
@@ -41,12 +41,15 @@ class DeezerAPI {
         }
     }
     
-    func downloadImageFromURL(url: String) -> UIImage {
-        let imageUrlString = url
-        
-        let imageUrl = URL(string: imageUrlString)!
-        let imageData = try! Data(contentsOf: imageUrl)
-        let image = UIImage(data: imageData) ?? UIImage(named: "no-image-png-3")!
+    func downloadImageFromURL(url: String?) -> UIImage {
+        var image: UIImage = UIImage()
+        if let imageUrlString = url {
+        if let imageUrl = URL(string: imageUrlString) {
+            if let imageData = try? Data(contentsOf: imageUrl) {
+                image = UIImage(data: imageData) ?? UIImage(named: "no-image-png-3")! // this force unwrap is safe because this image in assets folder.
+            }
+        }
+        }
         return image
     }
 }

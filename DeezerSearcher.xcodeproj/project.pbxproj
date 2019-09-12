@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F837900232A4B0D00DDD2E7 /* Request+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8378FE232A4B0D00DDD2E7 /* Request+CoreDataClass.swift */; };
+		5F837901232A4B0D00DDD2E7 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8378FF232A4B0D00DDD2E7 /* Request+CoreDataProperties.swift */; };
+		5F837903232A4BEE00DDD2E7 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F837902232A4BEE00DDD2E7 /* PersistanceManager.swift */; };
 		5F900B6D2327AD7D001820BF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F900B6C2327AD7D001820BF /* HistoryTableViewController.swift */; };
 		5F900B6F2327F573001820BF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F900B6E2327F573001820BF /* Protocols.swift */; };
-		5F900B712327F5E0001820BF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F900B702327F5E0001820BF /* CoreDataManager.swift */; };
 		5FAE418A23200D5300C03BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE418923200D5300C03BDC /* AppDelegate.swift */; };
 		5FAE418C23200D5300C03BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE418B23200D5300C03BDC /* ViewController.swift */; };
 		5FAE418F23200D5300C03BDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FAE418D23200D5300C03BDC /* Main.storyboard */; };
@@ -22,9 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F8378FE232A4B0D00DDD2E7 /* Request+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5F8378FF232A4B0D00DDD2E7 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5F837902232A4BEE00DDD2E7 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		5F900B6C2327AD7D001820BF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		5F900B6E2327F573001820BF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		5F900B702327F5E0001820BF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5FAE418623200D5300C03BDC /* DeezerSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeezerSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FAE418923200D5300C03BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FAE418B23200D5300C03BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,13 +72,15 @@
 		5FAE418823200D5300C03BDC /* DeezerSearcher */ = {
 			isa = PBXGroup;
 			children = (
+				5F8378FE232A4B0D00DDD2E7 /* Request+CoreDataClass.swift */,
+				5F8378FF232A4B0D00DDD2E7 /* Request+CoreDataProperties.swift */,
 				5FAE418923200D5300C03BDC /* AppDelegate.swift */,
+				5F837902232A4BEE00DDD2E7 /* PersistanceManager.swift */,
 				5FAE418B23200D5300C03BDC /* ViewController.swift */,
 				5F900B6C2327AD7D001820BF /* HistoryTableViewController.swift */,
 				5FAE41A62320FBBE00C03BDC /* Helpers */,
 				5FAE419E23200E1A00C03BDC /* Album.swift */,
 				5FAE41A42320CE0800C03BDC /* DeezerAPI.swift */,
-				5F900B702327F5E0001820BF /* CoreDataManager.swift */,
 				5FAE418D23200D5300C03BDC /* Main.storyboard */,
 				5FAE419323200D5600C03BDC /* Assets.xcassets */,
 				5FAE419523200D5600C03BDC /* LaunchScreen.storyboard */,
@@ -164,14 +170,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F837903232A4BEE00DDD2E7 /* PersistanceManager.swift in Sources */,
 				5FAE41A52320CE0800C03BDC /* DeezerAPI.swift in Sources */,
 				5FAE41A82320FBDD00C03BDC /* Extensions.swift in Sources */,
 				5FAE419223200D5300C03BDC /* DeezerSearcher.xcdatamodeld in Sources */,
 				5FAE418C23200D5300C03BDC /* ViewController.swift in Sources */,
+				5F837900232A4B0D00DDD2E7 /* Request+CoreDataClass.swift in Sources */,
 				5F900B6D2327AD7D001820BF /* HistoryTableViewController.swift in Sources */,
 				5FAE418A23200D5300C03BDC /* AppDelegate.swift in Sources */,
-				5F900B712327F5E0001820BF /* CoreDataManager.swift in Sources */,
 				5FAE419F23200E1A00C03BDC /* Album.swift in Sources */,
+				5F837901232A4B0D00DDD2E7 /* Request+CoreDataProperties.swift in Sources */,
 				5F900B6F2327F573001820BF /* Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

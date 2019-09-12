@@ -11,15 +11,12 @@ import UIKit
 class HistoryTableViewController: UITableViewController {
     
     var savedRequests: [Request] = []
-    var coreDataManager = CoreDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchSearchRequests()
     }
     
     func fetchSearchRequests() {
-        savedRequests = coreDataManager.fetchSearchRequest()
     }
 
     // MARK: - Table view data source
@@ -31,7 +28,7 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = savedRequests[indexPath.row].text
+//        cell.textLabel?.text = savedRequests[indexPath.row].text
 
         return cell
     }

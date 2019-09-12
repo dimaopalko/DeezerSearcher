@@ -19,7 +19,6 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     
     var deezerAPI = DeezerAPI()
-    var coreDataManager = CoreDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +31,6 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
         if text != "" {
             deezerAPI.searchAlbum(named: text)
             searchTextField.resignFirstResponder()
-            coreDataManager.saveSearchRequest(text: text)
         } else {
             displayMessage(title: nil, userMessage: "Please enter artist and album title")
         }

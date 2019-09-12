@@ -32,9 +32,9 @@ class HistoryTableViewController: UITableViewController {
 
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
 
     /*
     // Override to support conditional editing of the table view.

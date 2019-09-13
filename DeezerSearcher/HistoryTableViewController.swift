@@ -15,12 +15,9 @@ class HistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
-    func fetchSearchRequests() {
-    }
-
+    // TODO: Add Delete button
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,13 +29,11 @@ class HistoryTableViewController: UITableViewController {
         cell.textLabel?.text = savedRequests[indexPath.row].text
         return cell
     }
+    // MARK: - Table view Delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         navigationController?.popViewController(animated: true)
         let request = self.savedRequests[indexPath.row].text
             historyTableViewDelegate.didSelectHistoryItem(request: request)
-        
-        
     }
 }

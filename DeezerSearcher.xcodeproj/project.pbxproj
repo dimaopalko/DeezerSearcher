@@ -29,7 +29,7 @@
 		5F900B6C2327AD7D001820BF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = ../HistoryTableViewController.swift; sourceTree = "<group>"; };
 		5F900B6E2327F573001820BF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		5FAE418623200D5300C03BDC /* DeezerSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeezerSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FAE418923200D5300C03BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		5FAE418923200D5300C03BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FAE418B23200D5300C03BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5FAE418E23200D5300C03BDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FAE419123200D5300C03BDC /* DeezerSearcher.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeezerSearcher.xcdatamodel; sourceTree = "<group>"; };
@@ -73,25 +73,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		5F837906232C059A00DDD2E7 /* SupportFiles */ = {
-			isa = PBXGroup;
-			children = (
-				5FAE418923200D5300C03BDC /* AppDelegate.swift */,
-				5FAE419323200D5600C03BDC /* Assets.xcassets */,
-				5FAE419823200D5600C03BDC /* Info.plist */,
-			);
-			path = SupportFiles;
-			sourceTree = "<group>";
-		};
-		5F837907232C05B200DDD2E7 /* StoryBoards */ = {
-			isa = PBXGroup;
-			children = (
-				5FAE418D23200D5300C03BDC /* Main.storyboard */,
-				5FAE419523200D5600C03BDC /* LaunchScreen.storyboard */,
-			);
-			path = StoryBoards;
-			sourceTree = "<group>";
-		};
 		5FAE417D23200D5300C03BDC = {
 			isa = PBXGroup;
 			children = (
@@ -111,11 +92,14 @@
 		5FAE418823200D5300C03BDC /* DeezerSearcher */ = {
 			isa = PBXGroup;
 			children = (
+				5FAE418D23200D5300C03BDC /* Main.storyboard */,
+				5FAE419523200D5600C03BDC /* LaunchScreen.storyboard */,
+				5FAE418923200D5300C03BDC /* AppDelegate.swift */,
+				5FAE419323200D5600C03BDC /* Assets.xcassets */,
+				5FAE419823200D5600C03BDC /* Info.plist */,
 				5F837904232C055900DDD2E7 /* Model */,
-				5F837906232C059A00DDD2E7 /* SupportFiles */,
 				5F837905232C056900DDD2E7 /* ViewControllers */,
 				5FAE41A62320FBBE00C03BDC /* Protocols */,
-				5F837907232C05B200DDD2E7 /* StoryBoards */,
 			);
 			path = DeezerSearcher;
 			sourceTree = "<group>";

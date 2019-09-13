@@ -25,6 +25,7 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         super.viewDidLoad()
         deezerAPI.downloadDelegate = self
         searchButton.layer.cornerRadius = searchButton.frame.height / 4
+        hideKeyboardWhenTappedAround()
     }
     
     // IBActions
@@ -43,7 +44,7 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         }
     }
     
-    // Protocol methods
+    // Delegate methods
     
     func didFinishDownload(artistName: String, albumTitle: String, coverImage: UIImage) {
         DispatchQueue.main.async {
@@ -54,6 +55,7 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
     }
     
     func didSelectHistoryItem(request: String) {
+        searchTextField.text = ""
         deezerAPI.searchAlbum(named: request)
     }
     // Core Data Methods
@@ -91,11 +93,20 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         if segue.identifier == "HistorySegue" {
             if let historyVC = segue.destination as? HistoryTableViewController {
                 historyVC.historyTableViewDelegate = self
-                historyVC.savedRequests = getRequests()
+                historyVC.savedRequests = getRequests().reversed()
             }
         }
     }
-    
-    
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

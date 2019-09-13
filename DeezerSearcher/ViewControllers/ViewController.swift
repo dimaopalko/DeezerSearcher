@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ViewController: UIViewController, DeezerDownloadDelegate {
+class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableViewDelegate {
     
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -18,23 +18,32 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
     @IBOutlet weak var albumCoverImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var deezerAPI = DeezerAPI()
+    let deezerAPI = DeezerAPI()
+    let persistanceManager = PersistanceManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         deezerAPI.downloadDelegate = self
         searchButton.layer.cornerRadius = searchButton.frame.height / 4
     }
+    
+    // IBActions
 
+    @IBAction func historyButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "HistorySegue", sender: nil)
+    }
     @IBAction func searchButtonTapped(_ sender: Any) {
         guard let text = searchTextField.text else { return }
         if text != "" {
+            saveRequest(requestToSave: text)
             deezerAPI.searchAlbum(named: text)
             searchTextField.resignFirstResponder()
         } else {
             displayMessage(title: nil, userMessage: "Please enter artist and album title")
         }
     }
+    
+    // Protocol methods
     
     func didFinishDownload(artistName: String, albumTitle: String, coverImage: UIImage) {
         DispatchQueue.main.async {
@@ -43,6 +52,24 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
         self.albumCoverImageView.image = coverImage
         }
     }
+    
+    func didSelectHistoryItem(request: String) {
+        deezerAPI.searchAlbum(named: request)
+    }
+    // Core Data Methods
+    
+    func getRequests() -> [Request] {
+        let requests = persistanceManager.fetch(Request.self)
+        return requests
+    }
+    
+    func saveRequest(requestToSave: String) {
+        let request = Request(context: persistanceManager.context)
+        request.text = requestToSave
+        persistanceManager.save()
+    }
+    
+    // Just Alert Controller
     
     func displayMessage(title: String?, userMessage: String) -> Void {
         DispatchQueue.main.async
@@ -59,6 +86,16 @@ class ViewController: UIViewController, DeezerDownloadDelegate {
                 self.present(alertController, animated: true, completion:nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HistorySegue" {
+            if let historyVC = segue.destination as? HistoryTableViewController {
+                historyVC.historyTableViewDelegate = self
+                historyVC.savedRequests = getRequests()
+            }
+        }
+    }
+    
     
 }
 

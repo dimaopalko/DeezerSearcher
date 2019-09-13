@@ -12,3 +12,7 @@ import UIKit
 protocol DeezerDownloadDelegate {
     func didFinishDownload(artistName: String, albumTitle: String, coverImage: UIImage)
 }
+
+protocol HistoryTableViewDelegate {
+    func didSelectHistoryItem(request: String)
+}

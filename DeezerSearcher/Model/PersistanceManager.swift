@@ -11,8 +11,6 @@ import CoreData
 
 final class PersistanceManager {
     
-    private init() {}
-    static let shared = PersistanceManager()
     
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
@@ -25,16 +23,31 @@ final class PersistanceManager {
         return container
     }()
     
+    lazy var context = persistentContainer.viewContext
+    
     // MARK: - Core Data Saving support
     func save() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
+                print("yes boss, its successfully saved")
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
+    func fetch<T: NSManagedObject>(_ objectType: T.Type) -> [T] {
+        let entityName = String(describing: objectType)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        
+        do {
+            let fetchedObjects = try context.fetch(fetchRequest) as? [T]
+            return fetchedObjects ?? [T]()
+        } catch {
+            print(error)
+            return [T]()
+        }
+    }
+    
 }

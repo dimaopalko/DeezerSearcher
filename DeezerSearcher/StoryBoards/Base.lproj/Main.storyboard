@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" id="8dU-Wv-WlB">
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="h7q-am-BVc">
                             <connections>
-                                <segue destination="Dzo-Qr-waZ" kind="show" id="1f0-Pa-sAn"/>
+                                <action selector="historyButtonTapped:" destination="BYZ-38-t0r" id="C2S-bD-hnX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -97,11 +97,12 @@
                         <outlet property="artistNameLabel" destination="cIX-wI-zq5" id="pF2-oV-ByN"/>
                         <outlet property="searchButton" destination="ZE9-Lx-RQb" id="2rj-H0-R2L"/>
                         <outlet property="searchTextField" destination="NyQ-b9-Zh4" id="djE-ff-hre"/>
+                        <segue destination="Dzo-Qr-waZ" kind="show" identifier="HistorySegue" id="JBQ-ff-vhD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="63.616071428571423"/>
+            <point key="canvasLocation" x="1033" y="64"/>
         </scene>
         <!--History Table View Controller-->
         <scene sceneID="Cpz-Jy-T6T">

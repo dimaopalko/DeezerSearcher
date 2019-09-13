@@ -11,8 +11,8 @@ import CoreData
 
 final class PersistanceManager {
     
-    
     // MARK: - Core Data stack
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DeezerSearcher")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -26,6 +26,7 @@ final class PersistanceManager {
     lazy var context = persistentContainer.viewContext
     
     // MARK: - Core Data Saving support
+    
     func save() {
         if context.hasChanges {
             do {
@@ -37,6 +38,7 @@ final class PersistanceManager {
             }
         }
     }
+    
     func fetch<T: NSManagedObject>(_ objectType: T.Type) -> [T] {
         let entityName = String(describing: objectType)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)

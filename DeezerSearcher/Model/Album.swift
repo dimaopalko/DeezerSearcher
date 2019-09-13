@@ -12,7 +12,6 @@ struct Album: Decodable {
     let data: [Item]
 }
 
-
 struct Item: Codable {
     let artist: Artist
     let albumTitle: String
@@ -24,6 +23,7 @@ struct Item: Codable {
         case coverImageLink = "cover_xl"
     }
 }
+
 struct Artist: Codable {
     let name: String
 }

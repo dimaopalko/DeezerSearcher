@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableViewDelegate {
     
     @IBOutlet weak var searchButton: UIButton!
@@ -71,7 +69,7 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         persistanceManager.save()
     }
     
-    // Just Alert Controller
+    // Alert Controller
     
     func displayMessage(title: String?, userMessage: String) -> Void {
         DispatchQueue.main.async
@@ -100,6 +98,7 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
 }
 
 extension UIViewController {
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false

@@ -17,7 +17,6 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
     @IBOutlet weak var searchTextField: UITextField!
     
     let deezerAPI = DeezerAPI()
-    let persistanceManager = PersistanceManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +30,7 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
     @IBAction func historyButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "HistorySegue", sender: nil)
     }
-    @IBAction func searchButtonTapped(_ sender: Any) {
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
         guard let text = searchTextField.text else { return }
         if text != "" {
             saveRequest(requestToSave: text)
@@ -56,17 +55,18 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         searchTextField.text = ""
         deezerAPI.searchAlbum(named: request)
     }
+    
     // Core Data Methods
     
     func getRequests() -> [Request] {
-        let requests = persistanceManager.fetch(Request.self)
+        let requests = PersistanceManager.shared.fetch(Request.self)
         return requests
     }
     
     func saveRequest(requestToSave: String) {
-        let request = Request(context: persistanceManager.context)
+        let request = Request(context: PersistanceManager.shared.context)
         request.text = requestToSave
-        persistanceManager.save()
+        PersistanceManager.shared.save()
     }
     
     // Alert Controller

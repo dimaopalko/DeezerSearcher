@@ -11,6 +11,8 @@ import CoreData
 
 final class PersistanceManager {
     
+    static let shared = PersistanceManager()
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {

@@ -16,7 +16,10 @@ class DeezerAPI {
     func searchAlbum(named: String) {
         let splitedName = named.components(separatedBy: ["-", ":", "|", #"\"# , "/", "~"])
         let artistName = splitedName[0].dropLast().replacingOccurrences(of: " ", with: "%20")
-        let albumName = splitedName[1].dropFirst().replacingOccurrences(of: " ", with: "%20")
+        var albumName = " "
+        if splitedName.count > 1 {
+        albumName = splitedName[1].dropFirst().replacingOccurrences(of: " ", with: "%20")
+        }
         let url = "https://api.deezer.com/search/album?q=\(artistName)%20\(albumName)"
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { ( data, responce, error) in

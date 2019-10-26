@@ -15,9 +15,20 @@ class HistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        savedRequests = getRequests().reversed()
     }
     
-    // TODO: Add Delete button
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    func getRequests() -> [Request] {
+        let requests = PersistanceManager.shared.fetch(Request.self)
+        return requests
+    }
+    
+    func deleteRequests() {
+    }
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

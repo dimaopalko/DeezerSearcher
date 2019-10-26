@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableViewDelegate {
+class HomeViewController: UIViewController, DeezerDownloadDelegate, HistoryTableViewDelegate {
     
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -30,7 +30,9 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
     @IBAction func historyButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "HistorySegue", sender: nil)
     }
+    
     @IBAction func searchButtonTapped(_ sender: UIButton) {
+        self.showActivityIndicator()
         guard let text = searchTextField.text else { return }
         if text != "" {
             saveRequest(requestToSave: text)
@@ -48,20 +50,19 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         self.artistNameLabel.text = artistName
         self.albumTitleLabel.text = albumTitle
         self.albumCoverImageView.image = coverImage
+        self.removeActivityIndicator()
         }
     }
     
     func didSelectHistoryItem(request: String) {
-        searchTextField.text = ""
-        deezerAPI.searchAlbum(named: request)
+        self.showActivityIndicator()
+        dismissKeyboard()
+        DispatchQueue.main.async {
+            self.searchTextField.text = request
+            self.deezerAPI.searchAlbum(named: request)
+        }
     }
-    
     // Core Data Methods
-    
-    func getRequests() -> [Request] {
-        let requests = PersistanceManager.shared.fetch(Request.self)
-        return requests
-    }
     
     func saveRequest(requestToSave: String) {
         let request = Request(context: PersistanceManager.shared.context)
@@ -72,13 +73,11 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
     // Alert Controller
     
     func displayMessage(title: String?, userMessage: String) -> Void {
-        DispatchQueue.main.async
-            {
+        DispatchQueue.main.async {
                 let alertController = UIAlertController(title: title, message: userMessage, preferredStyle: .alert)
                 
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                    DispatchQueue.main.async
-                        {
+                    DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)
                     }
                 }
@@ -91,7 +90,6 @@ class ViewController: UIViewController, DeezerDownloadDelegate, HistoryTableView
         if segue.identifier == "HistorySegue" {
             if let historyVC = segue.destination as? HistoryTableViewController {
                 historyVC.historyTableViewDelegate = self
-                historyVC.savedRequests = getRequests().reversed()
             }
         }
     }

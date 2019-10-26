@@ -13,13 +13,14 @@
 		5F900B6D2327AD7D001820BF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F900B6C2327AD7D001820BF /* HistoryTableViewController.swift */; };
 		5F900B6F2327F573001820BF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F900B6E2327F573001820BF /* Protocols.swift */; };
 		5FAE418A23200D5300C03BDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE418923200D5300C03BDC /* AppDelegate.swift */; };
-		5FAE418C23200D5300C03BDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE418B23200D5300C03BDC /* ViewController.swift */; };
+		5FAE418C23200D5300C03BDC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE418B23200D5300C03BDC /* HomeViewController.swift */; };
 		5FAE418F23200D5300C03BDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FAE418D23200D5300C03BDC /* Main.storyboard */; };
 		5FAE419223200D5300C03BDC /* DeezerSearcher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE419023200D5300C03BDC /* DeezerSearcher.xcdatamodeld */; };
 		5FAE419423200D5600C03BDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FAE419323200D5600C03BDC /* Assets.xcassets */; };
 		5FAE419723200D5600C03BDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FAE419523200D5600C03BDC /* LaunchScreen.storyboard */; };
 		5FAE419F23200E1A00C03BDC /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE419E23200E1A00C03BDC /* Album.swift */; };
 		5FAE41A52320CE0800C03BDC /* DeezerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE41A42320CE0800C03BDC /* DeezerAPI.swift */; };
+		5FE3E6D12361D43F0071FA4E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E6D02361D43F0071FA4E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,7 @@
 		5F900B6E2327F573001820BF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		5FAE418623200D5300C03BDC /* DeezerSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeezerSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FAE418923200D5300C03BDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5FAE418B23200D5300C03BDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5FAE418B23200D5300C03BDC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5FAE418E23200D5300C03BDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FAE419123200D5300C03BDC /* DeezerSearcher.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeezerSearcher.xcdatamodel; sourceTree = "<group>"; };
 		5FAE419323200D5600C03BDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		5FAE419823200D5600C03BDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FAE419E23200E1A00C03BDC /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		5FAE41A42320CE0800C03BDC /* DeezerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeezerAPI.swift; sourceTree = "<group>"; };
+		5FE3E6D02361D43F0071FA4E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,7 @@
 		5F837905232C056900DDD2E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5FAE418B23200D5300C03BDC /* ViewController.swift */,
+				5FAE418B23200D5300C03BDC /* HomeViewController.swift */,
 				5F900B6C2327AD7D001820BF /* HistoryTableViewController.swift */,
 			);
 			path = ViewControllers;
@@ -99,17 +101,18 @@
 				5FAE419823200D5600C03BDC /* Info.plist */,
 				5F837904232C055900DDD2E7 /* Model */,
 				5F837905232C056900DDD2E7 /* ViewControllers */,
-				5FAE41A62320FBBE00C03BDC /* Protocols */,
+				5FAE41A62320FBBE00C03BDC /* Helpers */,
 			);
 			path = DeezerSearcher;
 			sourceTree = "<group>";
 		};
-		5FAE41A62320FBBE00C03BDC /* Protocols */ = {
+		5FAE41A62320FBBE00C03BDC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				5F900B6E2327F573001820BF /* Protocols.swift */,
+				5FE3E6D02361D43F0071FA4E /* Extensions.swift */,
 			);
-			path = Protocols;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,12 +189,13 @@
 				5F837903232A4BEE00DDD2E7 /* PersistanceManager.swift in Sources */,
 				5FAE41A52320CE0800C03BDC /* DeezerAPI.swift in Sources */,
 				5FAE419223200D5300C03BDC /* DeezerSearcher.xcdatamodeld in Sources */,
-				5FAE418C23200D5300C03BDC /* ViewController.swift in Sources */,
+				5FAE418C23200D5300C03BDC /* HomeViewController.swift in Sources */,
 				5F837900232A4B0D00DDD2E7 /* Request+CoreDataClass.swift in Sources */,
 				5F900B6D2327AD7D001820BF /* HistoryTableViewController.swift in Sources */,
 				5FAE418A23200D5300C03BDC /* AppDelegate.swift in Sources */,
 				5FAE419F23200E1A00C03BDC /* Album.swift in Sources */,
 				5F837901232A4B0D00DDD2E7 /* Request+CoreDataProperties.swift in Sources */,
+				5FE3E6D12361D43F0071FA4E /* Extensions.swift in Sources */,
 				5F900B6F2327F573001820BF /* Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
